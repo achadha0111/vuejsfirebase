@@ -1,8 +1,5 @@
 <template>
   <div id="app" class="container">
-    <div class="page-header">
-    <h1> Browse Internships at WorkTeen</h1>
-    </div>
     <div class="row">
     <!-- <div class="input-field col s12">
       <input placeholder="Search for internships" id="title" type="text" class="validate">
@@ -11,38 +8,9 @@
       <a class="waves-effect waves-light btn">Search</a>
     </div>
     -->
-    <div v-on:submit.prevent="addpos">
-    <h4> Add internships </h4>
-        <div class="input-field col s6">
-          <input id="title" type="text" class="validate" v-model="newpos.title">
-          <label for="title">Opportunity Title</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="organisation" type="text" class="validate" v-model="newpos.organisation">
-          <label for="organisation">Organisation</label>
-        </div>
-        <div class="input-field col s3">
-          <input id="duration" type="text" class="validate" v-model="newpos.duration">
-          <label for="duration">Duration</label>
-        </div>
-        <div class="input-field col s3">
-          <input id="apply-by" type="text" class="validate" v-model="newpos.applyby">
-          <label for="apply-by">Apply By</label>
-        </div>
-        <div class="input-field col s3">
-          <input id="stipend" type="text" class="validate" v-model="newpos.stipend">
-          <label for="stipend">Stipend</label>
-        </div>
-        <div class="input-field col s3">
-          <input id="details-url" type="text" class="validate" v-model="newpos.url">
-          <label for="details-url">URL for More Details</label>
-        </div>
-      </div>
-      <div class="col s12">
-      <a class="waves-effect waves-light btn" type="submit">Add Internships</a>
-      </div>
-    </div>
+
     <div class="row results-row">
+      <h4> Featured Opportunities </h4>
   <div  v-for="pos in positions" class="col s12 m4">
     <div class="card">
       <div class="card-image">
@@ -62,6 +30,7 @@
 </div
   </div>
   </div>
+</div>
 
 </template>
 
@@ -89,29 +58,14 @@ export default {
   name: 'app',
   firebase: {
   positions: posRef
-  },
-
-  data() {
-  return {
-    newpos: {
-    title: '',
-    organisation: '',
-    stipend: '',
-    duration: '',
-    applyby: '',
-    url: ''
-    }
-  }
-  },
-  methods: {
-    addpos: function() {
-      posRef.push(this.newpos)
-    }
   }
 }
 </script>
 
 <style>
+body{
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
 #app {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -130,5 +84,53 @@ text-align:left;
 
 .results-row{
 margin-top:3%;
+}
+
+.title{
+  font-family: 'Lato';
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  margin-top:20px;
+}
+
+.intro{
+  background-image: url('index-bg.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  padding:18%;
+  margin-top: -20px;
+}
+
+.page-footer{
+  background-image: url('index-bg.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+#search{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  border-bottom: 1px solid white;
+}
+.search-panel{
+  text-align: center;
+}
+
+.search-btn{
+  width:30%;
+  background-color: transparent;
+  border: 1px white solid;
+}
+
+.search-btn:hover{
+  background-color: rgba(0,0,0,0.4)
+}
+
+#search:active{
+  border-bottom: 1px solid white;
 }
 </style>
